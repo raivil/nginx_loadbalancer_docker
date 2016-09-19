@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  nginx_master:
+    build: nginx/
+    environment:
+      NODE_NAME: "master"
+  nginx_slave:
+    build: nginx/
+    environment:
+      NODE_NAME: "slave"
+  nginx_loadbalancer:
+    build: loadbalancer/
+    ports:
+      - 80:80
