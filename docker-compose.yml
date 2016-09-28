@@ -13,3 +13,13 @@ services:
     build: loadbalancer/
     ports:
       - 80:80
+  haproxy:
+    build: haproxy/
+    # image: haproxy:latest
+    volumes:
+      - ./keys/domain.com.pem:/etc/ssl/domain.com.pem:ro
+      - ./keys/domain.com.crt:/etc/ssl/domain.com.crt:ro
+      - ./keys/domain.com.key:/etc/ssl/domain.com.key:ro
+    ports:
+      - 81:80
+      - 443:443
